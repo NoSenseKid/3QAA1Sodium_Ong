@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Q3 1st Alternative Assessment</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+    
+	<script>
+	
+		function leapYear (){
+		    // enter the birthday of user
+		    let bdayInput = prompt("Please enter your birthday in this format: MM/DD/YYYY");
+		    let bday = new Date(bdayInput);  
+			console.log("bday: " + bday);
+			
+			
+            //calculate month difference from current date in time  
+            let month_diff = Date.now() - bday.getTime();  
+            console.log("month_diff: " + month_diff + " = " + 
+		    Date.now() + "-" + bday.getTime());
 
+            //convert the calculated difference in date format  
+            let age_dt = new Date(month_diff);   
+            console.log("age_dt: " + age_dt);
+      
+            //extract year from date      
+            let year = age_dt.getUTCFullYear();  
+            console.log("year: " + year);
+      
+            //now calculate the age of the user  
+            let age = Math.abs(year - 1970);  
+            console.log("age: " + age);
+      
+			// get year from date of bday
+			let bdayYear = bday.getUTCFullYear();  
+            console.log("bdayYear: " + bdayYear);
+			
+			// variable to check if birthday is a leap year
+			let leapYearCheck;
+			
+			// check if bdayYear is divisible by 4
+			if (bdayYear % 4 == 0){
+			
+		        // check if bdayYear is divisible by 100
+			    if (bdayYear % 100 == 0){
+				    
+					//check if bdayYear is divisible by 400
+					if (bdayYear % 400 == 0){
+						leapYearCheck = true;
+					}
+					else{
+						leapYearCheck = false;
+					}
+				}
+				else {
+					leapYearCheck = true;
+				}
+			}
+			else {
+				leapYearCheck = false;
+			}
+			
+			// check value of leapYearCheck
+			console.log(leapYearCheck);
+			
+			// display the calculated age  
+            document.write("Your Age: " + age + " years" + "</br>");
+			
+			// display if bdayYear is a leap year or not
+			if (leapYearCheck == true) {
+			    document.write("Your birthday is a leap year\n");
+			}
+		    else {
+			    document.write("Your birthday is not a leap year\n");
+			}
+		}
+		
+		leapYear();
+	</script>
+	
+</body>
+</html>
